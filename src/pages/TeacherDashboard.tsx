@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import styles from './TeacherDashboard.module.css'
+import FullscreenMap from '../components/FullscreenMap'
 
 // ── Mock data ────────────────────────────────────────────────
 const GUILDS = [
@@ -320,16 +321,7 @@ export default function TeacherDashboard() {
           </div>
 
           {/* Campaign row */}
-          <div className={styles.campaignRow}>
-            <div className={styles.card}>
-              <div className={styles.cardTitle}>
-                Campaign Map — Egypt
-                <button className={styles.cardAction} onClick={() => setUnlockedTile(true)}>
-                  {unlockedTile ? '✓ Red Sea Shore unlocked!' : '🔓 Unlock next tile →'}
-                </button>
-              </div>
-              <HexMap />
-            </div>
+         <FullscreenMap />
 
             <div className={styles.card}>
               <div className={styles.cardTitle}>Campaign Status</div>
