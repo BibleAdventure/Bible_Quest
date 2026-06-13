@@ -321,49 +321,7 @@ export default function TeacherDashboard() {
           </div>
 
           {/* Campaign row */}
-         <FullscreenMap />
-
-            <div className={styles.card}>
-              <div className={styles.cardTitle}>Campaign Status</div>
-              <div className={styles.campInfo}>
-                {[
-                  ['Campaign', 'Exodus', true],
-                  ['Current region', 'Egypt', false],
-                  ['Story week', 'Week 6', false],
-                  ['Next region', 'Red Sea (locked)', false],
-                ].map(([label, val, gold]) => (
-                  <div key={label as string} className={styles.campRow}>
-                    <span className={styles.campLabel}>{label}</span>
-                    <span className={styles.campVal} style={gold ? { color: '#c9b87a' } : {}}>{val}</span>
-                  </div>
-                ))}
-
-                <div className={styles.progWrap}>
-                  <div className={styles.progLabels}><span>Region progress</span><span>78%</span></div>
-                  <div className={styles.progBg}><div className={styles.progFill} style={{ width: '78%', background: 'linear-gradient(90deg,#6a5acd,#9b7fd4)' }} /></div>
-                </div>
-                <div className={styles.progWrap}>
-                  <div className={styles.progLabels}><span>Campaign completion</span><span>24%</span></div>
-                  <div className={styles.progBg}><div className={styles.progFill} style={{ width: '24%', background: 'linear-gradient(90deg,#7a5a20,#c9b87a)' }} /></div>
-                </div>
-
-                <div className={styles.nextTile}>
-                  <span style={{ fontSize: 20 }}>🌊</span>
-                  <div>
-                    <div style={{ fontSize: 11, color: '#6b6488' }}>Next tile to unlock</div>
-                    <div style={{ fontSize: 13, color: '#c9b87a', fontWeight: 500 }}>Red Sea Shore</div>
-                  </div>
-                  <button
-                    className={styles.unlockBtn}
-                    onClick={() => setUnlockedTile(true)}
-                    disabled={unlockedTile}
-                  >
-                    {unlockedTile ? '✓ Unlocked!' : 'Unlock →'}
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
+          <FullscreenMap />
 
           {/* Guild rankings */}
           <div>
