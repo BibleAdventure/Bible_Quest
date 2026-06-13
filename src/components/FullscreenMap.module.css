@@ -1,0 +1,217 @@
+/* FullscreenMap.module.css */
+
+/* ── Dashboard card ── */
+.dashCard {
+  background: #100e1c;
+  border: 1px solid #1e1a30;
+  border-radius: 12px;
+  padding: 16px;
+}
+.dashHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+.dashTitle {
+  font-size: 13px;
+  font-weight: 500;
+  color: #c9b87a;
+}
+.expandBtn {
+  background: #1e1840;
+  border: 1px solid #3d3070;
+  border-radius: 7px;
+  padding: 6px 14px;
+  font-size: 12px;
+  color: #9b7fd4;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: inherit;
+  transition: all 0.15s;
+}
+.expandBtn:hover {
+  background: #2a2458;
+  color: #c4b8e8;
+  border-color: #6a5acd;
+}
+.miniCanvas {
+  width: 100%;
+  border-radius: 8px;
+  background: #040210;
+  display: block;
+  cursor: pointer;
+}
+
+/* ── Fullscreen overlay ──
+   position:fixed + inset:0 covers the entire screen
+   including when the browser enters native fullscreen  */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: #060412;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Toolbar ── */
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  background: #13101f;
+  border-bottom: 1px solid #1e1a30;
+  flex-shrink: 0;
+  z-index: 10;
+}
+.toolbarTitle {
+  font-size: 14px;
+  font-weight: 500;
+  color: #c9b87a;
+}
+.toolbarSub {
+  font-size: 12px;
+  color: #6b6488;
+}
+.zoomGroup {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: auto;
+}
+.zoomLabel {
+  font-size: 12px;
+  color: #6b6488;
+}
+.zoomBtn {
+  background: #1a1628;
+  border: 1px solid #2a2445;
+  border-radius: 6px;
+  padding: 5px 11px;
+  font-size: 12px;
+  color: #9d8fc7;
+  cursor: pointer;
+  min-width: 36px;
+  text-align: center;
+  font-family: inherit;
+  transition: all 0.15s;
+}
+.zoomBtn:hover {
+  background: #2a2445;
+  color: #c4b8e8;
+}
+.zoomActive {
+  background: #1e1840 !important;
+  border-color: #4a3a90 !important;
+  color: #c9b87a !important;
+}
+.zoomDivider {
+  width: 1px;
+  height: 20px;
+  background: #2a2445;
+  margin: 0 4px;
+}
+.closeBtn {
+  background: #2d0f0f;
+  border: 1px solid #5a2020;
+  border-radius: 7px;
+  padding: 6px 14px;
+  font-size: 12px;
+  color: #e86a6a;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: inherit;
+  margin-left: 8px;
+  transition: all 0.15s;
+}
+.closeBtn:hover {
+  background: #3d1414;
+  border-color: #8a3030;
+}
+
+/* ── Viewport ── */
+.viewport {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  cursor: default;
+}
+.fullCanvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  /* width/height set by JS canvas attributes */
+}
+
+/* ── Edge scroll zones ── */
+.edgeTop, .edgeBottom, .edgeLeft, .edgeRight {
+  position: absolute;
+  z-index: 5;
+  pointer-events: all;
+}
+.edgeTop    { top: 0;    left: 80px; right: 80px; height: 60px; cursor: n-resize; }
+.edgeBottom { bottom: 0; left: 80px; right: 80px; height: 60px; cursor: s-resize; }
+.edgeLeft   { left: 0;   top: 60px;  bottom: 60px; width: 60px; cursor: w-resize; }
+.edgeRight  { right: 0;  top: 60px;  bottom: 60px; width: 60px; cursor: e-resize; }
+
+/* ── Scroll hint arrows ── */
+.scrollHint {
+  position: absolute;
+  z-index: 6;
+  font-size: 20px;
+  color: #c9b87a;
+  pointer-events: none;
+  transition: opacity 0.25s;
+}
+.shTop    { top: 14px;    left: 50%;  transform: translateX(-50%); }
+.shBottom { bottom: 14px; left: 50%;  transform: translateX(-50%); }
+.shLeft   { left: 14px;   top: 50%;   transform: translateY(-50%); }
+.shRight  { right: 14px;  top: 50%;   transform: translateY(-50%); }
+
+/* ── Tooltip ── */
+.tooltip {
+  position: absolute;
+  top: 80px;
+  left: 80px;
+  background: #1a1628;
+  border: 1px solid #2e2850;
+  border-radius: 8px;
+  padding: 9px 13px;
+  font-size: 12px;
+  color: #c4b8e8;
+  pointer-events: none;
+  transition: opacity 0.15s;
+  z-index: 20;
+  min-width: 160px;
+}
+.ttType { font-size: 10px; color: #6b6488; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 3px; }
+.ttName { font-size: 13px; font-weight: 500; color: #e8e4d9; margin-bottom: 4px; }
+.ttXp   { color: #c9b87a; font-size: 11px; }
+.ttLock { color: #4d465f; font-size: 11px; }
+
+/* ── Minimap ── */
+.minimap {
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+  background: rgba(13,11,20,0.92);
+  border: 1px solid #2a2445;
+  border-radius: 8px;
+  padding: 6px;
+  z-index: 15;
+}
+.minimapCanvas { display: block; border-radius: 4px; }
+.minimapLabel {
+  font-size: 10px;
+  color: #4d465f;
+  text-align: center;
+  margin-top: 4px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
